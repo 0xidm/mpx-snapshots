@@ -11,3 +11,6 @@ clean:
 	find . -name '*.pyc' -delete
 	rm -rf src/build
 	rm -rf src/*.egg-info
+
+run:
+	./src/scripts/mlp.py query-mlqdr-balance-of --filename ./var/mlqdr-result.json
