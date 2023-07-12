@@ -14,3 +14,6 @@ clean:
 
 run:
 	./src/scripts/mlp.py query-mlqdr-balance-of --filename ./var/mlqdr-result.json
+
+fantom:
+	python3 ./src/scripts/fantom-blocks.py
