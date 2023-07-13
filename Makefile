@@ -17,3 +17,6 @@ run:
 
 fantom:
 	python3 ./src/scripts/fantom-blocks.py
+
+fantom-import:
+	python3 ./src/scripts/fantom-import.py
