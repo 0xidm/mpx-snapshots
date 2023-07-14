@@ -16,13 +16,16 @@ run:
 	./src/scripts/mlp.py query-mlqdr-balance-of --filename ./var/mlqdr-result.json
 
 fantom-blocks:
-	python3 ./src/scripts/fantom-blocks.py
+	@python3 ./src/scripts/fantom-blocks.py
 
 fantom-import:
-	python3 ./src/scripts/fantom-import.py
+	@python3 ./src/scripts/fantom-import.py
 
 fantom-txs-csv:
-	python3 ./src/scripts/fantom-txs-csv.py | gzip > var/fantom-txs.csv.gz
+	@python3 ./src/scripts/fantom-txs-csv.py | gzip > var/fantom-txs.csv.gz
 
-fantom-balances:
-	python3 ./src/scripts/mlp.py
+fantom-staked-mlp:
+	@python3 ./src/scripts/mlp.py staked-mlp | jq > var/fantom-staked-mlp-results.json
+
+fantom-staked-mpx:
+	@python3 ./src/scripts/mlp.py staked-mpx | jq > var/fantom-staked-mpx-results.json
