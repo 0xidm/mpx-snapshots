@@ -12,8 +12,8 @@ from chaino.scheduler.call import CallScheduler
 from chaino.rpc import RPC
 
 
-snapshot_block = 55592181
-with open("var/fantom-addresses.json", "r") as f:
+snapshot_block = 64884840
+with open("data/fantom-addresses.json", "r") as f:
     addresses = json.load(f)
 
 # https://ftm.guru/rpc.html
