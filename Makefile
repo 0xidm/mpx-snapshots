@@ -15,8 +15,11 @@ clean:
 run:
 	./src/scripts/mlp.py query-mlqdr-balance-of --filename ./var/mlqdr-result.json
 
-fantom:
+fantom-blocks:
 	python3 ./src/scripts/fantom-blocks.py
 
 fantom-import:
 	python3 ./src/scripts/fantom-import.py
+
+fantom-txs-csv:
+	python3 ./src/scripts/fantom-txs-csv.py | gzip > var/fantom-txs.csv.gz
