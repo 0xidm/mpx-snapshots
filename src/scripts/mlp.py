@@ -1,91 +1,61 @@
-#!/usr/bin/env python3
-
 import os
 import json
-
-import web3
-import click
+import logging
 
 from dotenv import load_dotenv
-from chaino.spider import ChainoSpider
+
+from web3 import Web3, HTTPProvider
+from web3.middleware import simple_cache_middleware
+
+from chaino.utils import init_logger
+from chaino.scheduler.call import CallScheduler
+from chaino.rpc import RPC
 
 
-@click.group()
-def cli():
-    pass
+# https://ftm.guru/rpc.html
+_w3 = Web3(HTTPProvider("https://1rpc.io/ftm"))
+_w3.middleware_onion.add(simple_cache_middleware)
+rpc = RPC(_w3, slow_timeout=60, tick_delay=0.25, num_threads=1)
 
-@cli.command(help="Query mLQDR balanceOf amount")
-@click.option('--filename', required=True)
-def query_mlqdr_balance_of(filename):
-    block_number_snapshot = 55592181
 
-    spider = ChainoSpider(
-        results_json_filename=filename,
-        chain='fantom',
-        exit_early=False,
-        resume=False,
+def get_balances(contract_address, addresses, block_number=None):
+    call_scheduler = CallScheduler(
+        project_name=contract_address,
+        state_path="/tmp/fantom-call"
     )
+    call_scheduler.add_rpc(rpc)
 
-    with open(os.path.join(os.environ['DATA_PATH'], 'mlqdr-addresses.json'), 'r') as f:
+    for address in addresses:
+        call_scheduler.add_task(
+            contract_address=contract_address,
+            function="balanceOf(address)(uint256)",
+            input_value=[address],
+            block_number=block_number,
+        )
+
+    call_scheduler.start()
+
+def main():
+    init_logger(level="INFO")
+    snapshot_block = 55592181
+    with open("var/fantom-addresses.json", "r") as f:
         addresses = json.load(f)
 
-    # contract ABIs
-    with open(os.environ['ABI_FILENAME'], 'r') as f:
-        abis = json.load(f)
+    # MPX ERC20
+    # get_balances(
+    #     contract_address="0x66eEd5FF1701E6ed8470DC391F05e27B1d0657eb",
+    #     addresses=addresses,
+    #     block_number=snapshot_block
+    # )
 
-    # mLQDR ERC-20
-    contract = spider.w3.eth.contract(
-        address=web3.Web3.to_checksum_address('0xca3c69622e22524ff2b6cc24ee7e654bbf91578a'),
-        abi=json.dumps([abis["erc20_balance_of"]])
-    )
-
-    spider.add_parallel_tasks(
-        num_tasks=3,
-        task_name_fmt="mlqdr_balance_of_{}",
-        method_lambda=lambda address: contract.functions.balanceOf(address),
+    # MLP ERC20
+    get_balances(
+        contract_address="0xd5c313DE2d33bf36014e6c659F13acE112B80a8E",
         addresses=addresses,
-        block_identifier=block_number_snapshot,
+        block_number=snapshot_block
     )
-
-    spider.run()
-
-
-@cli.command(help="Query mLQDR balanceOf amount")
-@click.option('--filename', required=True)
-def query_mlqdr_balance_of(filename):
-    block_number_snapshot = 55592181
-
-    spider = ChainoSpider(
-        results_json_filename=filename,
-        chain='fantom',
-        exit_early=False,
-        resume=False,
-    )
-
-    with open(os.path.join(os.environ['DATA_PATH'], 'mlqdr-addresses.json'), 'r') as f:
-        addresses = json.load(f)
-
-    # contract ABIs
-    with open(os.environ['ABI_FILENAME'], 'r') as f:
-        abis = json.load(f)
-
-    # mLQDR ERC-20
-    contract = spider.w3.eth.contract(
-        address=web3.Web3.to_checksum_address('0xca3c69622e22524ff2b6cc24ee7e654bbf91578a'),
-        abi=json.dumps([abis["erc20_balance_of"]])
-    )
-
-    spider.add_parallel_tasks(
-        num_tasks=3,
-        task_name_fmt="mlqdr_balance_of_{}",
-        method_lambda=lambda address: contract.functions.balanceOf(address),
-        addresses=addresses,
-        block_identifier=block_number_snapshot,
-    )
-
-    spider.run()
 
 
 if __name__ == '__main__':
     load_dotenv()
-    cli()
+    main()

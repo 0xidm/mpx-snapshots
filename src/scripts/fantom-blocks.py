@@ -17,7 +17,7 @@ def create_scheduler():
 
     _w3 = Web3(HTTPProvider("https://rpc.ankr.com/fantom"))
     _w3.middleware_onion.add(simple_cache_middleware)
-    block_scheduler.add_rpc(RPC(_w3, slow_timeout=60))
+    block_scheduler.add_rpc(RPC(_w3, slow_timeout=60, num_threads=2))
 
     _w3 = Web3(HTTPProvider("https://rpc.ftm.tools"))
     _w3.middleware_onion.add(simple_cache_middleware)

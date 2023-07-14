@@ -23,3 +23,6 @@ fantom-import:
 
 fantom-txs-csv:
 	python3 ./src/scripts/fantom-txs-csv.py | gzip > var/fantom-txs.csv.gz
+
+fantom-balances:
+	python3 ./src/scripts/mlp.py

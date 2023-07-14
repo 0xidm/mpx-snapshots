@@ -8,7 +8,7 @@ from chaino.utils import init_logger
 def main():
     init_logger(level="INFO")
 
-    block_start = 56889636
+    block_start = 54647659
     block_end = 65653613
 
     fields = [
