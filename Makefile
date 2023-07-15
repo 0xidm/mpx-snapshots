@@ -12,15 +12,6 @@ clean:
 	rm -rf src/build
 	rm -rf src/*.egg-info
 
-fantom-blocks:
-	@python3 ./src/scripts/fantom-blocks.py
-
-fantom-import:
-	@python3 ./src/scripts/fantom-import.py
-
-fantom-txs-csv:
-	@python3 ./src/scripts/fantom-txs-csv.py | gzip > data/fantom-txs.csv.gz
-
 staked-mlp:
 	@python3 ./src/scripts/mlp.py staked-mlp | jq > data/fantom-staked-mlp-results.json
 
