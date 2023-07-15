@@ -28,7 +28,8 @@ def cli():
 
 @cli.command()
 def staked_mpx():
-    print(map_call(
+    print(CallScheduler.map_call(
+        rpc=rpc,
         contract_address="0xa4157E273D88ff16B3d8Df68894e1fd809DbC007",
         function_signature="balanceOf(address)(uint256)",
         addresses=addresses,
@@ -37,7 +38,8 @@ def staked_mpx():
 
 @cli.command()
 def mpx_erc20():
-    print(map_call(
+    print(CallScheduler.map_call(
+        rpc=rpc,
         contract_address="0x66eEd5FF1701E6ed8470DC391F05e27B1d0657eb",
         function_signature="balanceOf(address)(uint256)",
         addresses=addresses,
@@ -46,7 +48,8 @@ def mpx_erc20():
 
 @cli.command()
 def mlp_erc20():
-    print(map_call(
+    print(CallScheduler.map_call(
+        rpc=rpc,
         contract_address="0xd5c313DE2d33bf36014e6c659F13acE112B80a8E",
         function_signature="balanceOf(address)(uint256)",
         addresses=addresses,
@@ -55,7 +58,8 @@ def mlp_erc20():
 
 @cli.command()
 def staked_mlp():
-    print(map_call(
+    print(CallScheduler.map_call(
+        rpc=rpc,
         contract_address="0x49A97680938B4F1f73816d1B70C3Ab801FAd124B",
         function_signature="balanceOf(address)(uint256)",
         addresses=addresses,
@@ -64,29 +68,13 @@ def staked_mlp():
 
 @cli.command()
 def staked_mpx():
-    print(map_call(
+    print(CallScheduler.map_call(
+        rpc=rpc,
         contract_address="0xa4157E273D88ff16B3d8Df68894e1fd809DbC007",
         function_signature="stakedAmounts(address)(uint256)",
         addresses=addresses,
         block_number=snapshot_block
     ))
-
-def map_call(contract_address, function_signature, addresses, block_number=None):
-    call_scheduler = CallScheduler(
-        project_name=contract_address,
-        state_path="/tmp/fantom-call"
-    )
-    call_scheduler.add_rpc(rpc)
-
-    for address in addresses:
-        call_scheduler.add_task(
-            contract_address=contract_address,
-            function=function_signature,
-            input_value=[address],
-            block_number=block_number,
-        )
-
-    return call_scheduler.start()
 
 if __name__ == '__main__':
     init_logger(level="INFO")
