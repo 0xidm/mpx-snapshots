@@ -24,5 +24,14 @@ fantom-staked-mpx:
 fantom-equalizer-lp:
 	python3 ./src/scripts/mlp.py fantom-equalizer-wftm-mpx | jq > data/fantom-equalizer-wftm-mpx-results.json
 
-fantom-equalizer-gauge:
-	python3 ./src/scripts/mlp.py fantom-equalizer-gauge | jq > data/fantom-equalizer-gauge-results.json
+fantom-equalizer-gauge-1:
+	python3 ./src/scripts/mlp.py fantom-equalizer-gauge-1 | jq > data/fantom-equalizer-gauge-1-results.json
+
+fantom-equalizer-gauge-2:
+	python3 ./src/scripts/mlp.py fantom-equalizer-gauge-2 | jq > data/fantom-equalizer-gauge-2-results.json
+
+bsc-thena-gauge:
+	python3 ./src/scripts/mlp.py bsc-thena-gauge | jq > data/bsc-thena-gauge-results.json
+
+fantom: fantom-mpx-erc20 fantom-staked-mlp fantom-staked-mpx fantom-equalizer-lp fantom-equalizer-gauge-1 fantom-equalizer-gauge-2
+	@echo ok
