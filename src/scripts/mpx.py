@@ -3,6 +3,8 @@ import json
 import logging
 
 from dotenv import load_dotenv
+load_dotenv()
+
 import click
 from web3 import Web3, HTTPProvider
 from web3.middleware import simple_cache_middleware, geth_poa_middleware
@@ -28,15 +30,18 @@ bsc_snapshot_block = 29541500
 with open("data/bsc-addresses.json", "r") as f:
     bsc_addresses = json.load(f)
 
-bsc_w3 = Web3(HTTPProvider("https://bsc-dataseed1.binance.org/"))
+bsc_w3 = Web3(HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 bsc_w3.middleware_onion.add(simple_cache_middleware)
 bsc_w3.middleware_onion.inject(geth_poa_middleware, layer=0)
-bsc_rpc = RPC(bsc_w3, slow_timeout=5, tick_delay=0.2, num_threads=2)
+bsc_rpc = RPC(bsc_w3, slow_timeout=5, tick_delay=0.1, num_threads=2)
 
 
 @click.group()
 def cli():
     pass
+
+###
+# Fantom
 
 @cli.command()
 def fantom_staked_mpx():
@@ -118,6 +123,9 @@ def fantom_equalizer_gauge_2():
         block_number=fantom_snapshot_block
     ))
 
+###
+# Binance
+
 @cli.command()
 def bsc_thena_gauge():
     print(CallScheduler.map_call(
@@ -128,8 +136,27 @@ def bsc_thena_gauge():
         block_number=bsc_snapshot_block
     ))
 
+@cli.command()
+def bsc_thena_lp():
+    print(CallScheduler.map_call(
+        rpc=bsc_rpc,
+        contract_address="0x51BfC6e47c96d2b8c564B0DdD2C44fC03707cdc7",
+        function_signature="balanceOf(address)(uint256)",
+        addresses=bsc_addresses,
+        block_number=bsc_snapshot_block
+    ))
+
+@cli.command()
+def bsc_mpx_erc20():
+    print(CallScheduler.map_call(
+        rpc=bsc_rpc,
+        contract_address="0x94C6B279b5df54b335aE51866d6E2A56BF5Ef9b7",
+        function_signature="balanceOf(address)(uint256)",
+        addresses=bsc_addresses,
+        block_number=bsc_snapshot_block
+    ))
+
 
 if __name__ == '__main__':
     init_logger(level="INFO")
-    load_dotenv()
     cli()
