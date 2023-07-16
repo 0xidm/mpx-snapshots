@@ -12,8 +12,17 @@ clean:
 	rm -rf src/build
 	rm -rf src/*.egg-info
 
-staked-mlp:
-	@python3 ./src/scripts/mlp.py staked-mlp | jq > data/fantom-staked-mlp-results.json
+fantom-mpx-erc20:
+	python3 ./src/scripts/mlp.py fantom-mpx-erc20 | jq > data/fantom-mpx-results.json
 
-staked-mpx:
-	@python3 ./src/scripts/mlp.py staked-mpx | jq > data/fantom-staked-mpx-results.json
+fantom-staked-mlp:
+	python3 ./src/scripts/mlp.py fantom-staked-mlp | jq > data/fantom-staked-mlp-results.json
+
+fantom-staked-mpx:
+	python3 ./src/scripts/mlp.py fantom-staked-mpx | jq > data/fantom-staked-mpx-results.json
+
+fantom-equalizer-lp:
+	python3 ./src/scripts/mlp.py fantom-equalizer-wftm-mpx | jq > data/fantom-equalizer-wftm-mpx-results.json
+
+fantom-equalizer-gauge:
+	python3 ./src/scripts/mlp.py fantom-equalizer-gauge | jq > data/fantom-equalizer-gauge-results.json
