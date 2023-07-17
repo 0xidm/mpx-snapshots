@@ -47,7 +47,7 @@ def fantom_staked_mpx():
         rpc=fantom_rpc,
         contract_address="0xa4157E273D88ff16B3d8Df68894e1fd809DbC007",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -57,7 +57,7 @@ def fantom_mpx_erc20():
         rpc=fantom_rpc,
         contract_address="0x66eEd5FF1701E6ed8470DC391F05e27B1d0657eb",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -67,7 +67,7 @@ def fantom_mlp_erc20():
         rpc=fantom_rpc,
         contract_address="0xd5c313DE2d33bf36014e6c659F13acE112B80a8E",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -77,7 +77,7 @@ def fantom_staked_mlp():
         rpc=fantom_rpc,
         contract_address="0x49A97680938B4F1f73816d1B70C3Ab801FAd124B",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -87,7 +87,7 @@ def fantom_staked_mpx():
         rpc=fantom_rpc,
         contract_address="0xa4157E273D88ff16B3d8Df68894e1fd809DbC007",
         function_signature="stakedAmounts(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -97,7 +97,7 @@ def fantom_equalizer_wftm_mpx():
         rpc=fantom_rpc,
         contract_address="0xdE26e98d868FE02fFfb6DF26E638995124d3Ca13",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -107,7 +107,7 @@ def fantom_equalizer_gauge_1():
         rpc=fantom_rpc,
         contract_address="0x27F7cf5e918311AAF5E7185b5BcDAc158dFacf53",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -117,7 +117,7 @@ def fantom_equalizer_gauge_2():
         rpc=fantom_rpc,
         contract_address="0x7778a0B4688321c4E705d4e9F1A072f6F1579Bf8",
         function_signature="balanceOf(address)(uint256)",
-        inputs=fantom_addresses,
+        inputs=[[address] for address in fantom_addresses],
         block_number=fantom_snapshot_block
     ))
 
@@ -130,7 +130,7 @@ def bsc_thena_gauge():
         rpc=bsc_rpc,
         contract_address="0x0d739cE843d0584aAE800f54685d1fa69cEC1190",
         function_signature="balanceOf(address)(uint256)",
-        inputs=bsc_addresses,
+        inputs=[[address] for address in bsc_addresses],
         block_number=bsc_snapshot_block
     ))
 
@@ -140,7 +140,7 @@ def bsc_thena_lp():
         rpc=bsc_rpc,
         contract_address="0x51BfC6e47c96d2b8c564B0DdD2C44fC03707cdc7",
         function_signature="balanceOf(address)(uint256)",
-        inputs=bsc_addresses,
+        inputs=[[address] for address in bsc_addresses],
         block_number=bsc_snapshot_block
     ))
 
@@ -150,7 +150,7 @@ def bsc_mpx_erc20():
         rpc=bsc_rpc,
         contract_address="0x94C6B279b5df54b335aE51866d6E2A56BF5Ef9b7",
         function_signature="balanceOf(address)(uint256)",
-        inputs=bsc_addresses,
+        inputs=[[address] for address in bsc_addresses],
         block_number=bsc_snapshot_block
     ))
 
