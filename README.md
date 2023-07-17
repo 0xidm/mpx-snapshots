@@ -11,3 +11,5 @@
 ## Binance Snapshots
 
 - [BSC Notebook](src/mlp-bsc-snapshot.ipynb)
+- [BSC MPX balances](products/bsc-thena-balances.csv)
+- [Thena MPX-WBNB-LP balances](products/bsc-thena-balances.csv)
