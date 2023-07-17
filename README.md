@@ -1,15 +1,16 @@
 # mpx-snapshots
 
-## Fantom Snapshots
+- [Fantom Notebook](src/fantom-snapshot.ipynb)
+- [BSC Notebook](src/bsc-snapshot.ipynb)
 
-- [Fantom Notebook](src/mlp-fantom-snapshot.ipynb)
+## Fantom Snapshot CSV
+
 - [MPX balances](products/fantom-mpx-balances.csv)
 - [Staked MPX balances](products/fantom-smpx-balances.csv)
 - [Staked MLP balances](products/fantom-fsmlp-balances.csv)
 - [Equalizer WFTM-MPX-LP balances](products/fantom-equalizer-balances.csv)
 
-## Binance Snapshots
+## Binance Snapshot CSV
 
-- [BSC Notebook](src/mlp-bsc-snapshot.ipynb)
 - [BSC MPX balances](products/bsc-thena-balances.csv)
 - [Thena MPX-WBNB-LP balances](products/bsc-thena-balances.csv)
