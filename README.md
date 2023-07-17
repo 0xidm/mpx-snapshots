@@ -1,7 +1,7 @@
 # mpx-snapshots
 
-- [Fantom Notebook](src/fantom-snapshot.ipynb)
-- [BSC Notebook](src/bsc-snapshot.ipynb)
+- [Fantom Notebook](notebooks/fantom-snapshot.ipynb)
+- [BSC Notebook](notebooks/bsc-snapshot.ipynb)
 
 ## Fantom Snapshot CSV
 

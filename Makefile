@@ -22,22 +22,22 @@ fantom: fantom-mpx-erc20 fantom-staked-mlp fantom-staked-mpx fantom-equalizer-lp
 	@echo ok
 
 fantom-mpx-erc20:
-	python3 ./src/scripts/snapshot.py fantom-mpx-erc20 | jq > data/fantom-mpx-results.json
+	./bin/snapshot.py fantom-mpx-erc20 | jq > data/fantom-mpx.json
 
 fantom-staked-mlp:
-	python3 ./src/scripts/snapshot.py fantom-staked-mlp | jq > data/fantom-staked-mlp-results.json
+	./bin/snapshot.py fantom-staked-mlp | jq > data/fantom-staked-mlp.json
 
 fantom-staked-mpx:
-	python3 ./src/scripts/snapshot.py fantom-staked-mpx | jq > data/fantom-staked-mpx-results.json
+	./bin/snapshot.py fantom-staked-mpx | jq > data/fantom-staked-mpx.json
 
 fantom-equalizer-lp:
-	python3 ./src/scripts/snapshot.py fantom-equalizer-wftm-mpx | jq > data/fantom-equalizer-wftm-mpx-results.json
+	./bin/snapshot.py fantom-equalizer-wftm-mpx | jq > data/fantom-equalizer-wftm-mpx.json
 
 fantom-equalizer-gauge-1:
-	python3 ./src/scripts/snapshot.py fantom-equalizer-gauge-1 | jq > data/fantom-equalizer-gauge-1-results.json
+	./bin/snapshot.py fantom-equalizer-gauge-1 | jq > data/fantom-equalizer-gauge-1.json
 
 fantom-equalizer-gauge-2:
-	python3 ./src/scripts/snapshot.py fantom-equalizer-gauge-2 | jq > data/fantom-equalizer-gauge-2-results.json
+	./bin/snapshot.py fantom-equalizer-gauge-2 | jq > data/fantom-equalizer-gauge-2.json
 
 ###
 # Binance
@@ -46,10 +46,10 @@ bsc: bsc-mpx-erc20 bsc-thena-lp bsc-thena-gauge
 	@echo ok
 
 bsc-thena-lp:
-	python3 ./src/scripts/snapshot.py bsc-thena-lp | jq > data/bsc-thena-lp-results.json
+	./bin/snapshot.py bsc-thena-lp | jq > data/bsc-thena-lp.json
 
 bsc-thena-gauge:
-	python3 ./src/scripts/snapshot.py bsc-thena-gauge | jq > data/bsc-thena-gauge-results.json
+	./bin/snapshot.py bsc-thena-gauge | jq > data/bsc-thena-gauge.json
 
 bsc-mpx-erc20:
-	python3 ./src/scripts/snapshot.py bsc-mpx-erc20 | jq > data/bsc-mpx-erc20-results.json
+	./bin/snapshot.py bsc-mpx-erc20 | jq > data/bsc-mpx-erc20.json
