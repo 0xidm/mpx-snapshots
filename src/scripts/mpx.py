@@ -2,9 +2,6 @@ import os
 import json
 import logging
 
-from dotenv import load_dotenv
-load_dotenv()
-
 import click
 from web3 import Web3, HTTPProvider
 from web3.middleware import simple_cache_middleware, geth_poa_middleware
@@ -19,10 +16,9 @@ fantom_snapshot_block = 64884840
 with open("data/fantom-addresses.json", "r") as f:
     fantom_addresses = json.load(f)
 
-# https://ftm.guru/rpc.html
-fantom_w3 = Web3(HTTPProvider("https://1rpc.io/ftm"))
+fantom_w3 = Web3(HTTPProvider("https://rpc.ankr.com/fantom"))
 fantom_w3.middleware_onion.add(simple_cache_middleware)
-fantom_rpc = RPC(fantom_w3, slow_timeout=5, tick_delay=0.2, num_threads=2)
+fantom_rpc = RPC(fantom_w3, slow_timeout=5, tick_delay=0.1, num_threads=2)
 
 # Binance Parameters
 
@@ -30,7 +26,7 @@ bsc_snapshot_block = 29541500
 with open("data/bsc-addresses.json", "r") as f:
     bsc_addresses = json.load(f)
 
-bsc_w3 = Web3(HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
+bsc_w3 = Web3(HTTPProvider("https://bsc-dataseed1.binance.org/"))
 bsc_w3.middleware_onion.add(simple_cache_middleware)
 bsc_w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 bsc_rpc = RPC(bsc_w3, slow_timeout=5, tick_delay=0.1, num_threads=2)
