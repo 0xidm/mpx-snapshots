@@ -18,7 +18,7 @@ all: fantom bsc
 ###
 # Fantom
 
-fantom: fantom-mpx-erc20 fantom-staked-mlp fantom-staked-mpx fantom-equalizer-lp fantom-equalizer-gauge-1 fantom-equalizer-gauge-2
+fantom: fantom-mpx-erc20 fantom-staked-mlp fantom-staked-mpx fantom-equalizer-lp fantom-equalizer-gauge-1 fantom-equalizer-gauge-2 fantom-fvm-gauge
 	@echo ok
 
 fantom-mpx-erc20:
@@ -38,6 +38,9 @@ fantom-equalizer-gauge-1:
 
 fantom-equalizer-gauge-2:
 	./bin/snapshot.py fantom-equalizer-gauge-2 | jq > data/fantom-equalizer-gauge-2.json
+
+fantom-fvm-gauge:
+	./bin/snapshot.py fantom-fvm-gauge | jq > data/fantom-fvm-gauge.json
 
 ###
 # Binance
