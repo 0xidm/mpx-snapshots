@@ -1,6 +1,10 @@
 # mpx-snapshots
 
-- [Fantom Notebook](notebooks/fantom-snapshot.ipynb)
+## Notebooks
+
+- [Fantom Addresses](notebooks/fantom-addresses.ipynb)
+- [Fantom Balances](notebooks/fantom-balances.ipynb)
+- [Fantom Equalizer](notebooks/fantom-equalizer.ipynb)
 - [BSC Notebook](notebooks/bsc-snapshot.ipynb)
 
 ## Fantom Snapshot CSV
