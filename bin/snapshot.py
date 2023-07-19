@@ -16,6 +16,7 @@ from chaino.rpc import RPC
 # Fantom Parameters
 
 fantom_snapshot_block = 64884840
+fantom_current_block = 66051446
 with open("data/fantom-addresses.json", "r") as f:
     fantom_addresses = json.load(f)
 
@@ -123,13 +124,33 @@ def fantom_equalizer_gauge_2():
     ))
 
 @cli.command()
+def fantom_fvm_lp():
+    pprint(CallScheduler.map_call(
+        rpc=fantom_rpc,
+        contract_address="0xF8eed2665FD11a8431fc41b2582fD5E72a1606f0",
+        function_signature="balanceOf(address)(uint256)",
+        inputs=[[address] for address in fantom_addresses],
+        block_number=fantom_current_block
+    ))
+
+@cli.command()
 def fantom_fvm_gauge():
     pprint(CallScheduler.map_call(
         rpc=fantom_rpc,
         contract_address="0xF89f367E0225fE68c7c28Fad0BaDc7f569987cFe",
         function_signature="balanceOf(address)(uint256)",
         inputs=[[address] for address in fantom_addresses],
-        # block_number=fantom_snapshot_block
+        block_number=fantom_current_block
+    ))
+
+@cli.command()
+def fantom_mpx_erc20_current():
+    pprint(CallScheduler.map_call(
+        rpc=fantom_rpc,
+        contract_address="0x66eEd5FF1701E6ed8470DC391F05e27B1d0657eb",
+        function_signature="balanceOf(address)(uint256)",
+        inputs=[[address] for address in fantom_addresses],
+        block_number=fantom_current_block
     ))
 
 ###
