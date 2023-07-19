@@ -14,11 +14,12 @@
 
 - [MPX balances](products/fantom-mpx-balances.csv)
 - [Staked MPX balances](products/fantom-smpx-balances.csv)
-- [Staked MLP balances](products/fantom-fsmlp-balances.csv)
+- [Staked fsMLP balances](products/fantom-fsmlp-balances.csv)
 - [Equalizer WFTM-MPX-LP balances](products/fantom-equalizer-balances.csv)
 - [Combined balances](products/combined.csv)
 
 ## Binance Snapshot CSV
 
 - [BSC MPX balances](products/bsc-thena-balances.csv)
+- [BSC fsMLP balances](products/bsc-fsmlp-balances.csv)
 - [Thena MPX-WBNB-LP balances](products/bsc-thena-balances.csv)
