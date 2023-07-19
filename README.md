@@ -1,5 +1,7 @@
 # mpx-snapshots
 
+[Balances for veFVM](products/vefvm-balances.csv)
+
 ## Notebooks
 
 - [Fantom Addresses](notebooks/fantom-addresses.ipynb)
@@ -14,6 +16,7 @@
 - [Staked MPX balances](products/fantom-smpx-balances.csv)
 - [Staked MLP balances](products/fantom-fsmlp-balances.csv)
 - [Equalizer WFTM-MPX-LP balances](products/fantom-equalizer-balances.csv)
+- [Combined balances](products/combined.csv)
 
 ## Binance Snapshot CSV
 
