@@ -5,6 +5,7 @@
 - [Fantom Addresses](notebooks/fantom-addresses.ipynb)
 - [Fantom Balances](notebooks/fantom-balances.ipynb)
 - [Fantom Equalizer](notebooks/fantom-equalizer.ipynb)
+- [Fantom FVM](notebooks/fantom-fvm.ipynb)
 - [BSC Notebook](notebooks/bsc-snapshot.ipynb)
 
 ## Fantom Snapshot CSV
