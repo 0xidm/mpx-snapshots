@@ -186,6 +186,16 @@ def bsc_mpx_erc20():
         block_number=bsc_snapshot_block
     ))
 
+@cli.command()
+def bsc_fsmlp():
+    pprint(CallScheduler.map_call(
+        rpc=bsc_rpc,
+        contract_address="0x4e0e48b787E308049d0CA6bfAA84D5c61c5a4A1e",
+        function_signature="balanceOf(address)(uint256)",
+        inputs=[[address] for address in bsc_addresses],
+        block_number=bsc_snapshot_block
+    ))
+
 
 if __name__ == '__main__':
     init_logger(level="INFO")

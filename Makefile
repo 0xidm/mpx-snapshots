@@ -51,7 +51,7 @@ fantom-mpx-erc20-current:
 ###
 # Binance
 
-bsc: bsc-mpx-erc20 bsc-thena-lp bsc-thena-gauge
+bsc: bsc-mpx-erc20 bsc-thena-lp bsc-thena-gauge bsc-fsmlp
 	@echo ok
 
 bsc-thena-lp:
@@ -62,3 +62,6 @@ bsc-thena-gauge:
 
 bsc-mpx-erc20:
 	./bin/snapshot.py bsc-mpx-erc20 | jq > data/bsc-mpx-erc20.json
+
+bsc-fsmlp:
+	./bin/snapshot.py bsc-fsmlp | jq > data/bsc-fsmlp.json
